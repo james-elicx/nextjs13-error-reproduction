@@ -3,7 +3,7 @@
 // From https://beta.nextjs.org/docs/api-reference/use-selected-layout-segment
 
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+// import { useSelectedLayoutSegment } from 'next/navigation';
 
 // This *client* component will be imported into a blog layout
 export default function NavLink({
@@ -15,8 +15,11 @@ export default function NavLink({
 }) {
   // Navigating to `/blog/hello-world` will return 'hello-world'
   // for the selected layout segment
-  const segment = useSelectedLayoutSegment() ?? '';
-  const isActive = href.slice(1) === segment;
+
+  // I would use `useSelectedLayoutSegment` to highlight the active link, but it doesn't work in edge runtime...
+  // see https://github.com/vercel/next.js/issues/44725
+  // const segment = useSelectedLayoutSegment() ?? '';
+  const isActive = href.slice(1) === 'segment';
 
   return (
     <Link
